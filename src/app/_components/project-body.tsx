@@ -7,10 +7,10 @@ type Props = {
   className?: string;
 };
 
-export function ProjectBody({  children, className }: Props) {
+function ProjectBody({ children, className }: Props) {
   return (
-    <div className={cn(markdownStyles["markdown"], className)}>
-      {children}
-    </div>
+    <div className={cn(markdownStyles["markdown"], className)}>{children}</div>
   );
 }
+
+export default ProjectBody;

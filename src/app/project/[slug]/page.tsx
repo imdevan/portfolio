@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllProjects, getProjectBySlug } from "@/lib/api";
 import Container from "_c/container";
-import { ProjectBody } from "_c/project-body";
+import ProjectBody from "_c/project-body";
 import { ProjectHeader } from "_c/project-header";
 import AnimateIn from "_c/animate-in";
 import ProjectNextUp from "_c/project-next-up";
