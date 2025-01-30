@@ -1,6 +1,8 @@
 import createMDX from '@next/mdx'
  
 const nextConfig = {
+  output: "export",  // <=== enables static exports
+
   // Allow images from Cloudinary
   images: {
     remotePatterns: [
