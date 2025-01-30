@@ -1,8 +1,5 @@
 import createMDX from '@next/mdx'
  
-import remarkGfm from 'remark-gfm';
-import rehypeRemoveComments from 'rehype-remove-comments'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Allow images from Cloudinary
