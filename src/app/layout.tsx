@@ -65,7 +65,6 @@ export default function RootLayout({
       >
         <ThemeSwitcher />
         <CowSay />
-        <Header />
 
         <main className="min-h-screen">{children}</main>
         <Footer />

@@ -38,7 +38,6 @@ export function Intro() {
             </AnimateIn>
         </AnimateIn>
       </AnimateIn>
-
     </section>
   );
 }
