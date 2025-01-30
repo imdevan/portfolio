@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Container from "_c/container";
 import AnimateIn from "_c/animate-in";
-import H from "../_components/h";
+import H from "_c/h";
 
 export default async function Post(props: Params) {
   return (

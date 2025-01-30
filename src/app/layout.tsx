@@ -5,9 +5,10 @@ import { Montserrat } from "next/font/google";
 import Header from "_c/header";
 
 import cn from "classnames";
-import { ThemeSwitcher } from "./_components/theme-switcher";
+import { ThemeSwitcher } from "_c/theme-switcher";
 
 import "./globals.css";
+import CowSay from "_c/cow-say";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -63,6 +64,7 @@ export default function RootLayout({
         className={cn(montserrat.className, "dark:bg-zinc-900 dark:text-neutral-50 transition-colors  duration-200")}
       >
         <ThemeSwitcher />
+        <CowSay />
         <Header />
 
         <main className="min-h-screen">{children}</main>
