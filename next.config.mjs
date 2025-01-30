@@ -5,6 +5,7 @@ const nextConfig = {
 
   // Allow images from Cloudinary
   images: {
+    domains: ['res.cloudinary.com', 'devanhuapaya.com'],
     remotePatterns: [
       {
         protocol: 'https',
