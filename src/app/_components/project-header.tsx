@@ -25,7 +25,7 @@ export function ProjectHeader({ title, coverImage, date, author }: Props) {
         transition: { ease: ["easeIn", "easeOut"] }
       }}
       >
-      <div className="flex flex-col justify-center items-center w-full h-vh">
+      <div className="flex flex-col justify-center items-center w-full h-screen">
         <div className="mb-20">
           <CoverImage title={title} src={coverImage} />
         </div>

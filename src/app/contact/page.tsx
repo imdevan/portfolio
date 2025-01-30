@@ -7,7 +7,7 @@ import H from "_c/h";
 export default async function Post(props: Params) {
   return (
       <Container>
-          <div className="flex w-full h-vh max-w-7xl items-center">
+          <div className="flex w-full h-screen max-w-7xl items-center">
           <AnimateIn >
             <H className="mb-16">
               Hello There!
