@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="">
       <FooterLeaf />
       
-      <Container>
+      <Container className="max-w-7xl">
         <div className="my-28 flex flex-col lg:flex-row gap-4 items-center w-full">
           <div className="flex flex-col items-center lg:items-start gap-4 lg:pl-4 lg:w-1/2">
             <Link
