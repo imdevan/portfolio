@@ -9,6 +9,7 @@ import { ThemeSwitcher } from "_c/theme-switcher";
 
 import "./globals.css";
 import CowSay from "_c/cow-say";
+import BG from "_c/bg";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -65,9 +66,11 @@ export default function RootLayout({
       >
         <ThemeSwitcher />
         <CowSay />
-
+  
         <main className="min-h-screen">{children}</main>
+        
         <Footer />
+        <BG />
       </body>
     </html>
   );
