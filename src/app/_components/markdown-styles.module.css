@@ -10,6 +10,10 @@
   /* margin-top: 3.125rem; */
 }
 
+.markdown a > p {
+  @apply inline;
+}
+
 .markdown p,
 .markdown ul,
 .markdown ol,
