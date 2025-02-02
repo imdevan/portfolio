@@ -66,6 +66,20 @@ const ImageSlider = ({ slides, cloud = true, portrait = false }: Props) => {
         portrait ? " h-96 md:h-[720px]" : "w-full h-48 md:h-[405px]"
       )}
     >
+      {/* Hidden preloader for all images */}
+      <div style={{ display: "none" }}>
+        {slides.map((slide, index) => (
+          <Image
+            key={`preload-${index}`}
+            src={cloud ? CLOUD_URL + slide : slide}
+            alt={`Preload slide ${index + 1}`}
+            layout="fill"
+            objectFit="contain"
+            priority={true} // force eager loading
+          />
+        ))}
+      </div>
+
       <AnimatePresence initial={false}>
         {loadedImages.length > 0 ? (
           loadedImages[currentIndex ?? 0]
@@ -83,6 +97,7 @@ const ImageSlider = ({ slides, cloud = true, portrait = false }: Props) => {
               alt={`Slide 1`}
               layout="fill"
               objectFit="contain"
+              // placeholder="blur" // TODO: add blurred placeholder for images?
             />
           </motion.div>
         )}
