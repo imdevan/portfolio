@@ -108,16 +108,76 @@ import To from "_c/to";
   </FIP>
   <FIP>
     In addition to being a team lead, I also contributed on several projects in varying capacities 
-    from Csharp to Elixir
+    from Csharp to Elixir.
   </FIP>
   <FIP>
-    ## Internal Tooling
+    ## Leadership
   </FIP>
   <FIP>
-    One of the projects I'm most proud of at GenUI was developing a react+nextjs toolkit that could be used to quickly
-    jumpstart Next.js projects. Which was used by 3 different large scale projects while I was at GenUI.
+    While at GenUI I also mentored several junior engineers, supervised 3 direct reports, and conducted new 
+    hire interviews.
+  </FIP>
+  <FIP>
+    ## Internal Tools
+  </FIP>
+  <FIP>
+    I also worked on several internal tools at the company, from developing the internal company information hub,
+    to creating reusable codebases that saved the company thousands of dollars in project startup costs.  
   </FIP>
 </Section>
+
+<Section>
+  <FIP>
+    # Next Launch
+  </FIP>
+  <FIP>
+    <To a="https://github.com/generalui/next-launch">Next Launch</To> is one of the projects I'm most proud of 
+    at developing at GenUI. Next Launch is a toolkit that could be used to quickly jumpstart Next.js projects. 
+    Which was used by 3 different large scale projects at GenUI during my tenure.
+  </FIP>
+
+  <FIP>
+    It can be easy to overlook all of the little things that go into developing an app for the web. Even though
+    web tech has come a long way. It isn't possible to just pull Next.js and expect to have an app that is going 
+    to function at a production level. There are still things to consider like ORMs, localization, adding analytics, 
+    authentication, decisions about linting, testing, deployment workflows, and the list goes on.
+  </FIP>
+
+  <FIP>
+    The primary goal of the project was to create a Next.js bootstrap with the minimal amount of tooling needed 
+    to launch a successful GenUI project to a production environment with confidence that it will work well and 
+    be easy to jump in to and get started.
+    A secondary goal was also to standardize code across teams a little more, as many developers at the company would 
+    often jump between projects and limiting their transition time meant saving the company valuable resources.
+  </FIP>
+
+  <FIP>
+    The tool needed to be easy to use, easy to get off the ground fast, easy for new developers, and easy to customize.
+    That meant needing consensus of other React developers at GenUI to find a solution that would work for everyone. 
+    (Or as many developers as possible). As well as looking back on other projects I had developed so far at GenUI and 
+    as a freelancer.
+  </FIP>
+  
+  <FIP>
+    I created a toolkit that leveraged Next.js' full-stack capabilities, backed by typescript, Prisma, Tailwind, 
+    localization, prettier, eslint, and editorconfigs that matched GenUI's coding style principles, and a grab bag 
+    of other libraries that were necessary to make an app that was not just a functioning mvp, but production ready, fast. 
+  </FIP>
+
+  <FIP>
+    One piece of the toolkit that I found very clever and useful was creating a 
+    <To a="https://github.com/generalui/next-launch/blob/main/client.config.js">config file</To>
+    that contained critical client information and theming that could be quickly hot swapped. 
+    This would allow a team to cut straight to developing the functioning parts of an app that our
+    clients cared about saving up to 30 hours of developer timer per project.
+  </FIP>
+</Section>
+
+{/* 
+  TODO: Add screen-shot of next-launch working
+  - add another screen-shot or gif showing the config being updated
+ */}
+
 
 <Section className="tools">
   <FIP>

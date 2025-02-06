@@ -10,6 +10,7 @@ ogImage:
 import ImageSlider from "_c/image-slider";
 import FIP from "_c/fade-in-and-up";
 import Section from "_c/section";
+import To from "_c/to";
 
 <Section>
   <FIP>
@@ -17,24 +18,44 @@ import Section from "_c/section";
   </FIP>
 
   <FIP>
-    Get Biofuel is an intiative of the Growth Energy trade association to promote American grown, corn based, ethanol fuels.
+  <To a="https://getbiofuel.com/">GetBiofuel</To> advocates for the use of biofuels 
+  like ethanol to cut greenhouse gas emissions by 46%, supporting U.S. 
+  energy independence with over 97% of biofuel produced domestically. They promote environmental
+   preservation through innovative jobs and cleaner air, 
+   aiming to integrate biofuels more broadly across America. 
   </FIP>
   
   <FIP>
-    When I was brought on to this project the team had a tight deadline and unfinsihed designs. By thinking in systems I was able to take the incomplete designs and built a component system, so that when new designs came I could use the components that fit into the designs we did have. When I needed to create a new component to fill in a gap in design, I would build with the mindset that piece could be used again to make future pages easier to developer.
+    When I was brought on to this project the team had a tight deadline and 
+    unfinsihed designs. By thinking in systems I was able to take the incomplete 
+    designs and build a component system, so that when new designs came I could 
+    use the components that fit into the designs we did have. When I needed to 
+    create a new component to fill in a gap in design, I would build with the mindset 
+    that piece could be used again to make future pages easier to developer.
   </FIP>
 </Section>
 
 
 <Section>
   <FIP>
-    <img src="https://res.cloudinary.com/bisonstudio/image/upload/c_scale,q_auto:best,w_1080/v1612231857/Portfolio/getbiofuel.com/getbiofuel_1.png" />
+    <ImageSlider
+      slides={[
+        "c_scale,q_auto:best,w_1080/v1612231857/Portfolio/getbiofuel.com/getbiofuel_1.png",
+        "v1612231787/Portfolio/getbiofuel.com/getbiofuel.com__iPhone_X_1.png",
+      ]}
+    />
   </FIP>
 </Section>
 
 <Section>
   <FIP>
-    REPLACE THE FOLLOWING COPY - Each company that subscbribes to the Evan360 platform is registered a subdomain that isolates all of the user's data from other companies. Companies can have teams that allow for managers to signup their team members.
+    # BioFuel Finder
+  </FIP>
+  
+  <FIP>
+    One critical aspect of this project was integrating with the google maps api to showcase nearby 
+    biofuel locations. The tool could be used on one of two ways, either finding biofuel nearby a current location,
+    or to see biofuel locations that were along a persons route. 
   </FIP>
 </Section>
 
@@ -44,13 +65,15 @@ import Section from "_c/section";
   </FIP>
 </Section>
 
-
 <Section>
   <FIP>
-    # Mobile First
+    ## BioFuel FInder
   </FIP>
+
   <FIP>
-    Because it’s 2021 and everything should be expected to be accessed everywhere. And, due to the nature of the fuel finder supporting people on the move, it was important that this asspect of the site works exceptionally well on mobile.
+    The idea behind the fuel finder was to showcase local gas stations that sold
+    Unleaded 88 and Flex Fuel. The following is an example of someone searching for 
+    BioFuel in the San Francisco Area
   </FIP>
 </Section>
 
@@ -59,7 +82,6 @@ import Section from "_c/section";
     <ImageSlider
       portrait
       slides={[
-        "v1612231787/Portfolio/getbiofuel.com/getbiofuel.com__iPhone_X_1.png",
         "v1612231785/Portfolio/getbiofuel.com/getbiofuel.com_fuelfinder__iPhone_X.png",
         "v1612231784/Portfolio/getbiofuel.com/getbiofuel.com_fuelfinder__iPhone_X_1.png",
       ]}
@@ -69,12 +91,16 @@ import Section from "_c/section";
 
 <Section>
   <FIP>
-    # Trip Planning
+    ## Trip Planning
   </FIP>
 
   <FIP>
-    Probably the most complex integration between between Google Maps and my clients services.
-    I used a Route
+    Probably the most complex integration between between Google Maps and my clients services. That also required custom 
+    elements for each map interaction. From the trip inputs to the marker information.
+  </FIP>
+
+  <FIP>
+    The following example shows a user traveling from San Francisco to Seattle searching for BioFuel along their route.
   </FIP>
 </Section>
 
@@ -84,14 +110,15 @@ import Section from "_c/section";
     <ImageSlider
       portrait
       slides={[
+        "v1612231784/Portfolio/getbiofuel.com/getbiofuel.com_fuelfinder__tab_1_iPhone_X.png",
         "v1612231781/Portfolio/getbiofuel.com/getbiofuel.com_fuelfinder__iPhone_X_2.png",
         "v1612231783/Portfolio/getbiofuel.com/getbiofuel.com_fuelfinder__iPhone_X_4.png",
         "v1612231778/Portfolio/getbiofuel.com/getbiofuel.com_fuelfinder__iPhone_X_3.png",
-        "v1612231784/Portfolio/getbiofuel.com/getbiofuel.com_fuelfinder__tab_1_iPhone_X.png",
       ]}
     />
   </FIP>
 </Section>
+
 
 <Section className="tools">
   <FIP>
