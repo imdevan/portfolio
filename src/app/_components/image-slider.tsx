@@ -104,6 +104,7 @@ const ImageSlider = ({ slides, cloud = true, portrait = false }: Props) => {
       </AnimatePresence>
 
       {/* Navigation Buttons */}
+      {/* TODO: try - update buttons to match the page background color with some shadow */}
       <button
         onClick={() => updateSlide("left")}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-full"
