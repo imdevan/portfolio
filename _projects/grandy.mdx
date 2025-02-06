@@ -10,13 +10,21 @@ ogImage:
 import ImageSlider from "_c/image-slider";
 import FIP from "_c/fade-in-and-up";
 import Section from "_c/section";
+import To from "_c/to";
+
+{/*
+  TODO: talk about: what parts of the project I did work on. 
+  - Note - talk about that i had no control of the actual design here
+*/}
 
 <Section>
   <FIP>
     # Background 
   </FIP>
   <FIP>
-    I was brought onto the Grandy project to create games that would 
+    <To a="https://www.facebook.com/gograndysf">Grandy</To> was conceived as a fun and easy way for kids and 
+    grandparents to connect through video chat, messaging, and games. They would promote healthy communication habits
+     between kids and older adults - spreading joy and wisdom across generations.
   </FIP>
 </Section>
 
@@ -26,34 +34,73 @@ import Section from "_c/section";
     # Project Overview 
   </FIP>
   <FIP>
-    I was brought onto the Grandy project to create games that would allow for seniors and their family to engage with
-    each other in fun ways.
+    I was brought onto the Grandy project to help launch their first mvp. When I was brought 
+    on to the project the team had already built out much of the backend and app design.
   </FIP>
-</Section>
-
-
+  <FIP>
+    I was tasked with integrating websockets and the Twilio meeting api so that users could interact with each other. 
+    Additionally, I implemented a connect four game, and an interactive survey that kids could fill out with their grandparents. 
+  </FIP>
 <Section>
   <FIP>
     <img src="https://res.cloudinary.com/bisonstudio/image/upload/v1587502192/Portfolio/grandy/grandy_games_page_jen.png" />
   </FIP>
 </Section>
 
-<Section>
   <FIP>
-    # Connect Four
+    ## Connect Four
   </FIP>
-</Section>
+  <FIP>
+    Connect Four was intended to be the first of many games that would be added to the Grandy app.
+    The reason for starting with Connect Four was that it is a simple game that is fun to play 
+    for everyone regardless of age.   
+  </FIP>
 
-<Section>
+  <FIP>
+    You can also see an example of the Twilio api working here, although I am by myself on the "call" so you can only 
+    see 2019 me here.
+  </FIP>
+  
+  <Section>
+    <FIP>
+      <img src="https://res.cloudinary.com/bisonstudio/image/upload/v1738800326/output-1080_dh9glu.gif" />
+    </FIP>
+  </Section>
+
+  <FIP>
+    ## Responsive 
+  </FIP>
+  <FIP>
+    Of course the project also had to look good and work well when deployed to mobile devices via Apache Cordova.
+    So I implemented best practice responsive design to ensure that the connect four game, interview section, and Twilio 
+    calls worked across all devices.
+  </FIP>
+  
+  <Section>
   <FIP>
     <img src="https://res.cloudinary.com/bisonstudio/image/upload/c_scale,h_720/v1587501624/Portfolio/grandy/localhost_3000_accounts_5169168353591296_games_iPhone_X.png" />
   </FIP>
+  </Section>
 </Section>
 
 <Section>
   <FIP>
     # A Look into the past
   </FIP>
+  <FIP>
+    As you can see below the app creators wanted a way for kids to connect with their older relatives and learn 
+    about their grandparents past. 
+  </FIP>
+  <FIP>
+    Although there is none in the Twilio call here, you can see where a kid would be able to see their grandparents while 
+    filling out asking them questions in order to fill out the "Your Life Story" survey.
+  </FIP>
+  <FIP>
+    Once completed the app would generate a pdf which turned out to be much trickier to code than originally 
+    expected as the pdf templating engine available at the time treated the entire pdf as one giant canvas across 
+    pages which required some clever math to get the formatting to look good and accommodate for different answer lengths. 
+  </FIP>
+  
 </Section>
 
 <Section>
@@ -66,4 +113,22 @@ import Section from "_c/section";
   </FIP>
 </Section>
 
+
+<Section className="tools">
+  <FIP>
+    # The Technology
+  </FIP>
+
+  <FIP>
+    - React
+  </FIP>
+
+  <FIP>
+    - Firebase
+  </FIP>
+
+  <FIP>
+    - Postman
+  </FIP>
+</Section>
 
