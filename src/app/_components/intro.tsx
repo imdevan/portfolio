@@ -9,7 +9,7 @@ import Container from "./container";
 
 export function Intro() {
   return (
-    <section className="flex-col flex items-center justify-center md:justify-between h-screen md:h-auto md:mt-20 md:mb-32 max-w-6xl mx-auto w-full overflow-x-hidden overflow-y-hidden">
+    <section className="flex-col flex items-center justify-center md:justify-between h-screen md:h-auto md:mt-20 lg:mt-32 md:mb-32 max-w-6xl mx-auto w-full overflow-x-hidden overflow-y-hidden">
       <AnimateIn>
         <div className="mb-32 md:mb-32">
           <Container>
