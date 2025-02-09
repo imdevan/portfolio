@@ -34,7 +34,7 @@ export function Intro() {
                       Full-stack Typescript Developer.
                     </span>
                     <AnimateIn>
-                      That builds web and native apps, deploys them to production, and cares about people.
+                      That builds web and native apps, deploys them to production, and cares about the people who use them.
                     </AnimateIn>
                   </AnimateIn>
                 </H>
