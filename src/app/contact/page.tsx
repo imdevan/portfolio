@@ -27,7 +27,7 @@ export default async function Post(props: Params) {
                         </H>
                       </a>
                   </li>
-                  <li>
+                  <li className="mb-12">
                     <AnimateIn>
                       <a
                         href={`mailto:huapayadevan@gmail.com`}
@@ -36,6 +36,19 @@ export default async function Post(props: Params) {
                         >
                         <H s={2}>
                           Email
+                        </H>
+                      </a>
+                    </AnimateIn>
+                  </li>
+                  <li>
+                    <AnimateIn>
+                      <a
+                        href={`https://res.cloudinary.com/bisonstudio/image/upload/v1739237153/Devan_Huapaya_Resume_y3zj0t.pdf`}
+                        target="_blank"
+                        className="hover:underline"
+                        >
+                        <H s={2}>
+                          Resume
                         </H>
                       </a>
                     </AnimateIn>
