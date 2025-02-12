@@ -12,7 +12,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw'
 import rehypeRemoveComments from 'rehype-remove-comments'
 
-// import { ProjectTitle } from "_c/post-title";
+// import { ProjectTitle } from "_c/project-title";
 
 export default async function markdownToHtml(markdown: string) {
   // const result = await remark().use(html).process(markdown);

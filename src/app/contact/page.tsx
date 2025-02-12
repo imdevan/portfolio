@@ -1,10 +1,9 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Container from "_c/container";
 import AnimateIn from "_c/animate-in";
 import H from "_c/h";
 
-export default async function Post(props: Params) {
+export default async function Contact() {
   return (
       <Container>
           <div className="flex w-full h-screen max-w-7xl items-center">

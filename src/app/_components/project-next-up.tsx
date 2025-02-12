@@ -1,6 +1,6 @@
 import markdownStyles from "./markdown-styles.module.css";
 import "./markdown-nested-styles.css";
-import { Post } from "@/interfaces/post";
+import { Project } from "@/interfaces/project";
 import AnimateIn from "_c/animate-in";
 import FIP from "_c/fade-in-and-up";
 import ProjectPreview from "_c/project-preview-next-up";
