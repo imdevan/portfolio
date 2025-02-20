@@ -4,4 +4,5 @@
 - [ ] Default skin with GenUI theme
 - [ ] Custom starter them for a fictitious client 
 [ ] Add more hometax sheild screenshots
+[ ] Add shadows to images on projects
 
