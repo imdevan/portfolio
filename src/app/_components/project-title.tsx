@@ -1,14 +1,10 @@
-import { ReactNode } from "react";
-import H from "_c/h";
+import { ReactNode } from 'react'
+import H from '_c/h'
 
 type Props = {
-  children?: ReactNode;
-};
+  children?: ReactNode
+}
 
 export function ProjectTitle({ children }: Props) {
-  return (
-    <H className="text-center">
-      {children}
-    </H>
-  );
+  return <H className="text-center">{children}</H>
 }

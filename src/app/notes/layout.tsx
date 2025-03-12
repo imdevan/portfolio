@@ -1,4 +1,4 @@
-import Header from "_c/header";
+import Header from '_c/header'
 
 export default function NotesLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -6,5 +6,5 @@ export default function NotesLayout({ children }: { children: React.ReactNode })
       <Header />
       {children}
     </div>
-  );
-} 
+  )
+}

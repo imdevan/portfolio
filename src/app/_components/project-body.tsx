@@ -1,16 +1,14 @@
-import markdownStyles from "./markdown-styles.module.css";
-import cn from "classnames";
-import "./markdown-nested-styles.css";
+import markdownStyles from './markdown-styles.module.css'
+import cn from 'classnames'
+import './markdown-nested-styles.css'
 
 type Props = {
-  children?: React.ReactNode;
-  className?: string;
-};
-
-function ProjectBody({ children, className }: Props) {
-  return (
-    <div className={cn(markdownStyles["markdown"], className)}>{children}</div>
-  );
+  children?: React.ReactNode
+  className?: string
 }
 
-export default ProjectBody;
+function ProjectBody({ children, className }: Props) {
+  return <div className={cn(markdownStyles['markdown'], className)}>{children}</div>
+}
+
+export default ProjectBody

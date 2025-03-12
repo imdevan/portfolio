@@ -1,0 +1,23 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+package-lock.json
+yarn-lock.json
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Misc
+.DS_Store
+*.pem
+.env*
+.vercel
+
+# MDX files (to preserve comments and special formatting)
+*.mdx
+_projects/
+_notes/

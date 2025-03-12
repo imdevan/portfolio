@@ -1,14 +1,14 @@
-import Link from "next/link";
-import H from "./h";
-import FIP from "_c/fade-in-and-up";
-import Image from "next/image";
+import Link from 'next/link'
+import H from './h'
+import FIP from '_c/fade-in-and-up'
+import Image from 'next/image'
 
 type Props = {
-  title: string;
-  coverImage: string;
-  slug: string;
-  key?: string | number;
-};
+  title: string
+  coverImage: string
+  slug: string
+  key?: string | number
+}
 
 const NextUpPreview = ({ title, coverImage, slug }: Props) => {
   return (
@@ -33,7 +33,7 @@ const NextUpPreview = ({ title, coverImage, slug }: Props) => {
         </Link>
       </div>
     </FIP>
-  );
-};
+  )
+}
 
-export default NextUpPreview;
+export default NextUpPreview

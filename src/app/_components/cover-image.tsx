@@ -1,12 +1,12 @@
-import cn from "classnames";
-import Link from "next/link";
-import Image from "next/image";
+import cn from 'classnames'
+import Link from 'next/link'
+import Image from 'next/image'
 
 type Props = {
-  title: string;
-  src: string;
-  slug?: string;
-};
+  title: string
+  src: string
+  slug?: string
+}
 
 const CoverImage = ({ title, src, slug }: Props) => {
   return (
@@ -17,7 +17,7 @@ const CoverImage = ({ title, src, slug }: Props) => {
       width={720}
       height={480}
     />
-  );
-};
+  )
+}
 
-export default CoverImage;
+export default CoverImage

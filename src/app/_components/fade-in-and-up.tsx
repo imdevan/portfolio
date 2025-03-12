@@ -1,13 +1,13 @@
-import * as motion from "motion/react-client";
+import * as motion from 'motion/react-client'
 
 type Props = {
-  children: React.ReactNode; // To support any valid React content inside the header
-  yOffset?: number;
-  duration?: number;
-  delay?: number;
-  className?: string;
-  ease?: string;
-};
+  children: React.ReactNode // To support any valid React content inside the header
+  yOffset?: number
+  duration?: number
+  delay?: number
+  className?: string
+  ease?: string
+}
 
 const FadeInUp = ({
   children,
@@ -15,7 +15,7 @@ const FadeInUp = ({
   duration = 1,
   delay = 0.2,
   className,
-  ease = "easeInOut",
+  ease = 'easeInOut',
 }: Props) => {
   return (
     <motion.div
@@ -27,7 +27,7 @@ const FadeInUp = ({
     >
       {children}
     </motion.div>
-  );
-};
+  )
+}
 
-export default FadeInUp;
+export default FadeInUp

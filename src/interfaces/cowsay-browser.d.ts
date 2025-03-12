@@ -1,1 +1,1 @@
-declare module 'cowsay-browser';
+declare module 'cowsay-browser'

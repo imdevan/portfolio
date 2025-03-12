@@ -11,5 +11,17 @@
   "endOfLine": "lf",
   "embeddedLanguageFormatting": "auto",
   "singleAttributePerLine": false,
-  "proseWrap": "preserve"
+  "proseWrap": "preserve",
+  "jsxSingleQuote": false,
+  "jsxBracketSameLine": false,
+  "htmlWhitespaceSensitivity": "css",
+  "overrides": [
+    {
+      "files": ["*.mdx"],
+      "options": {
+        "parser": "mdx",
+        "embeddedLanguageFormatting": "off"
+      }
+    }
+  ]
 }

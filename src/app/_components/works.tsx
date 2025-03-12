@@ -1,13 +1,13 @@
-import { Project } from "@/interfaces/project";
-import ProjectPreview from "_c/project-preview";
-import H from "_c/h";
-import Container from "_c/container";
-import FIP from "_c/fade-in-and-up";
+import { Project } from '@/interfaces/project'
+import ProjectPreview from '_c/project-preview'
+import H from '_c/h'
+import Container from '_c/container'
+import FIP from '_c/fade-in-and-up'
 
 // import ScrollContainer from "./scroll-container";
 type Props = {
-  projects: Project[];
-};
+  projects: Project[]
+}
 
 export function Works({ projects }: Props) {
   return (
@@ -23,19 +23,12 @@ export function Works({ projects }: Props) {
 
         <div className="grid grid-cols-1 gap-y-16 md:gap-y-32 lg:gap-y-40 max-w-6xl mx-auto">
           {projects.map((proj) => (
-            <div
-              className="flex justify-start even:justify-end"
-              key={proj.slug}
-            >
-              <ProjectPreview
-                title={proj.title}
-                coverImage={proj.coverImage}
-                slug={proj.slug}
-              />
+            <div className="flex justify-start even:justify-end" key={proj.slug}>
+              <ProjectPreview title={proj.title} coverImage={proj.coverImage} slug={proj.slug} />
             </div>
           ))}
         </div>
       </section>
     </Container>
-  );
+  )
 }

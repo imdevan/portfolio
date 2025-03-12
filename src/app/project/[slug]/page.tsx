@@ -1,25 +1,25 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getAllProjects, getProjectBySlug } from "@/lib/api";
-import Container from "_c/container";
-import ProjectBody from "_c/project-body";
-import { ProjectHeader } from "_c/project-header";
-import AnimateIn from "_c/animate-in";
-import ProjectNextUp from "_c/project-next-up";
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { getAllProjects, getProjectBySlug } from '@/lib/api'
+import Container from '_c/container'
+import ProjectBody from '_c/project-body'
+import { ProjectHeader } from '_c/project-header'
+import AnimateIn from '_c/animate-in'
+import ProjectNextUp from '_c/project-next-up'
 
 export default async function Project(props: Props) {
-  const params = await props.params;
+  const params = await props.params
   const allProjects = getAllProjects().map((p) => ({
     slug: p.slug,
     title: p.title,
     coverImage: p.coverImage,
-  }));
-  const project = getProjectBySlug(params.slug);
-  const projectExported = await import(`_projects/${params.slug}.mdx`);
-  const { default: Project } = projectExported;
+  }))
+  const project = getProjectBySlug(params.slug)
+  const projectExported = await import(`_projects/${params.slug}.mdx`)
+  const { default: Project } = projectExported
 
   if (!project) {
-    return notFound();
+    return notFound()
   }
 
   return (
@@ -43,24 +43,24 @@ export default async function Project(props: Props) {
         </AnimateIn>
       </article>
     </Container>
-  );
+  )
 }
 
 type Props = {
   params: Promise<{
-    slug: string;
-  }>;
-};
+    slug: string
+  }>
+}
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const params = await props.params;
-  const project = getProjectBySlug(params.slug);
+  const params = await props.params
+  const project = getProjectBySlug(params.slug)
 
   if (!project) {
-    return notFound();
+    return notFound()
   }
 
-  const title = `${project.title} | Devan Huapaya`;
+  const title = `${project.title} | Devan Huapaya`
 
   return {
     title,
@@ -68,13 +68,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       title,
       images: [project.ogImage.url],
     },
-  };
+  }
 }
 
 export async function generateStaticParams() {
-  const projects = getAllProjects();
+  const projects = getAllProjects()
 
   return projects.map((project) => ({
     slug: project.slug,
-  }));
+  }))
 }

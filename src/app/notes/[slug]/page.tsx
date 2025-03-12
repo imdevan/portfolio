@@ -1,25 +1,25 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getAllNotes, getNoteBySlug } from "@/lib/api";
-import Container from "_c/container";
-import NoteBody from "_c/project-body";
-import AnimateIn from "_c/animate-in";
-import H from "_c/h";
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { getAllNotes, getNoteBySlug } from '@/lib/api'
+import Container from '_c/container'
+import NoteBody from '_c/project-body'
+import AnimateIn from '_c/animate-in'
+import H from '_c/h'
 
 type Props = {
   params: {
-    slug: string;
-  };
-};
+    slug: string
+  }
+}
 
 export default async function Note(props: Props) {
-  const params = await props.params;
-  const note = getNoteBySlug(params.slug);
-  const noteExported = await import(`_notes/${params.slug}.mdx`);
-  const { default: Note } = noteExported;
+  const params = await props.params
+  const note = getNoteBySlug(params.slug)
+  const noteExported = await import(`_notes/${params.slug}.mdx`)
+  const { default: Note } = noteExported
 
   if (!note) {
-    return notFound();
+    return notFound()
   }
 
   return (
@@ -33,7 +33,7 @@ export default async function Note(props: Props) {
                 {new Date(note.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
-                  day: 'numeric'
+                  day: 'numeric',
                 })}
               </time>
             </div>
@@ -45,21 +45,21 @@ export default async function Note(props: Props) {
         </AnimateIn>
       </article>
     </Container>
-  );
+  )
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const params = await props.params;
-  const note = getNoteBySlug(params.slug);
+  const params = await props.params
+  const note = getNoteBySlug(params.slug)
 
   if (!note) {
-    return notFound();
+    return notFound()
   }
 
-  const title = `${note.title} | Notes | Devin Huapaya`;
+  const title = `${note.title} | Notes | Devin Huapaya`
 
   return {
     title,
     description: note.description,
-  };
-} 
+  }
+}

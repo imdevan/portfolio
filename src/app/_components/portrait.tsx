@@ -1,8 +1,8 @@
-import Image from "next/image";
-import CircleSVG from "_public/assets/icons/circle.svg"
-import wavesSVG from "_public/assets/icons/waves.svg"
-import SVG from 'react-inlinesvg';
-import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import Image from 'next/image'
+import CircleSVG from '_public/assets/icons/circle.svg'
+import wavesSVG from '_public/assets/icons/waves.svg'
+import SVG from 'react-inlinesvg'
+import { HOME_OG_IMAGE_URL } from '@/lib/constants'
 
 const Portrait = () => {
   return (
@@ -32,10 +32,9 @@ const Portrait = () => {
         alt={`Devan Huapaya`}
         width={320}
         height={480}
-        />
+      />
+    </div>
+  )
+}
 
-      </div>
-  );
-};
-
-export default Portrait;
+export default Portrait

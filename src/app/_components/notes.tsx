@@ -1,12 +1,12 @@
-import { Note } from "@/interfaces/note";
-import NotePreview from "./note-preview";
-import H from "./h";
-import Container from "./container";
-import FIP from "./fade-in-and-up";
+import { Note } from '@/interfaces/note'
+import NotePreview from './note-preview'
+import H from './h'
+import Container from './container'
+import FIP from './fade-in-and-up'
 
 type Props = {
-  notes: Note[];
-};
+  notes: Note[]
+}
 
 export function Notes({ notes }: Props) {
   return (
@@ -34,5 +34,5 @@ export function Notes({ notes }: Props) {
         </div>
       </section>
     </Container>
-  );
-} 
+  )
+}
