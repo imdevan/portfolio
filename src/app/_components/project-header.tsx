@@ -1,18 +1,16 @@
-import CoverImage from './cover-image'
-import { ProjectTitle } from '_c/project-title'
-import { type Author } from '@/interfaces/author'
 import { defaultTransition } from '@/lib/motion-transitions'
-import * as motion from 'motion/react-client'
 import AnimateIn from '_c/animate-in'
+import { ProjectTitle } from '_c/project-title'
+import * as motion from 'motion/react-client'
+import CoverImage from './cover-image'
 
 type Props = {
   title: string
   coverImage: string
   date: string
-  author?: Author
 }
 
-export function ProjectHeader({ title, coverImage, date, author }: Props) {
+export function ProjectHeader({ title, coverImage, date }: Props) {
   return (
     <motion.div
       data-testid="ProjectHeader"

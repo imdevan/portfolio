@@ -1,11 +1,11 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 import { getAllProjects, getProjectBySlug } from '@/lib/api'
+import AnimateIn from '_c/animate-in'
 import Container from '_c/container'
 import ProjectBody from '_c/project-body'
 import { ProjectHeader } from '_c/project-header'
-import AnimateIn from '_c/animate-in'
 import ProjectNextUp from '_c/project-next-up'
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 export default async function Project(props: Props) {
   const params = await props.params
@@ -30,7 +30,6 @@ export default async function Project(props: Props) {
             title={project.title}
             coverImage={project.coverImage}
             date={project.date}
-            author={project.author}
           />
 
           <ProjectBody className="my-16 md:my-24 lg:my-32 lg:mb-48">
@@ -66,7 +65,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title,
     openGraph: {
       title,
-      images: [project.ogImage.url],
+      images: project.ogImage?.url
+        ? [
+            {
+              url: project.ogImage.url,
+            },
+          ]
+        : [],
     },
   }
 }

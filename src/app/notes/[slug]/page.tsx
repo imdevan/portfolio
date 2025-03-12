@@ -1,15 +1,15 @@
+import { getNoteBySlug } from '@/lib/api'
+import AnimateIn from '_c/animate-in'
+import Container from '_c/container'
+import H from '_c/h'
+import NoteBody from '_c/project-body'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getAllNotes, getNoteBySlug } from '@/lib/api'
-import Container from '_c/container'
-import NoteBody from '_c/project-body'
-import AnimateIn from '_c/animate-in'
-import H from '_c/h'
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export default async function Note(props: Props) {
