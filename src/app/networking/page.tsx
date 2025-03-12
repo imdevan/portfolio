@@ -7,7 +7,7 @@ export default async function Contact() {
   return (
     <Container>
       <div className="max-w-7xl mt-24 md:mt-32">
-        <H className="mb-24">Hello There! 👋🏽</H>
+        <H className="mb-24">Hello There! 👋🏼</H>
 
         <ul className="flex flex-col items-center mx-auto">
           <li className="mb-24">
