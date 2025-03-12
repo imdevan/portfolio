@@ -1,4 +1,4 @@
-import Header from "_c/header";
+import Header from '_c/header';
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
