@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import H from './h'
 import FIP from '_c/fade-in-and-up'
+import Link from 'next/link'
 import CoverImage from './cover-image'
+import H from './h'
 
 type Props = {
   title: string
@@ -15,7 +15,7 @@ type Props = {
 const NotePreview = ({ title, subtitle, description, date, slug, coverImage }: Props) => {
   return (
     <FIP>
-      <div className="block max-w-[720px] p-6 hover:shadow-xl hover:shadow-xxl hover:text-underline rounded-lg transition-shadow duration-200">
+      <div className="block max-w-[720px] p-6 hover:shadow-xl hover:shadow-xxl hover:text-underline hover:bg-white hover:dark:bg-zinc-900 rounded-lg transition ease-in duration-[300ms]">
         <Link href={`/notes/${slug}`} aria-label={title}>
           {coverImage && (
             <div className="mb-5">
