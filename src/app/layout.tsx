@@ -1,16 +1,15 @@
-import Footer from '_c/footer'
 import { HOME_OG_IMAGE_URL } from '@/lib/constants'
+import Footer from '_c/footer'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import Header from '_c/header'
 
-import cn from 'classnames'
 import { ThemeSwitcher } from '_c/theme-switcher'
+import cn from 'classnames'
 
-import './globals.css'
-import CowSay from '_c/cow-say'
 import BG from '_c/bg'
+import CowSay from '_c/cow-say'
 import ScrollTop from '_c/scrollTop'
+import './globals.css'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -30,22 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/male-technologist.png" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/assets/images/male-technologist.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/assets/images/male-technologist.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/memoji.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/memoji.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/memoji.png" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#000000" />
-        <link rel="shortcut icon" href="/assets/images/male-technologist.png" />
+        <link rel="shortcut icon" href="/assets/images/memoji.png" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#000" />
