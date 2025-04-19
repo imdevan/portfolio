@@ -6,6 +6,7 @@ import { Montserrat } from 'next/font/google'
 import { ThemeSwitcher } from '_c/theme-switcher'
 import cn from 'classnames'
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 import BG from '_c/bg'
 import CowSay from '_c/cow-say'
 import ScrollTop from '_c/scrollTop'
@@ -55,6 +56,8 @@ export default function RootLayout({
         <Footer />
         <BG />
       </body>
+
+      <GoogleAnalytics gaId="G-ZV58ZJ50SL" />
     </html>
   )
 }
