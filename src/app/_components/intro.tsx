@@ -1,11 +1,11 @@
+import AnimateIn from '_c/animate-in'
 import AppTitle from '_c/appTitle'
 import H from '_c/h'
-import { Fira_Code } from 'next/font/google'
 import classNames from 'classnames'
+import { Fira_Code } from 'next/font/google'
+import Container from './container'
 import Portrait from './portrait'
 const firaCode = Fira_Code({ subsets: ['latin'] })
-import AnimateIn from '_c/animate-in'
-import Container from './container'
 
 export function Intro() {
   return (
@@ -28,12 +28,14 @@ export function Intro() {
             <Container>
               <H s={2} className={classNames(firaCode.className, 'text-2xl md:text-3xl')}>
                 <AnimateIn>
-                  <span className="dark:text-pink-200 text-pink-400">
-                    Full-stack Typescript Developer.
+                  <span className="dark:text-[#e26460] text-[#e26460]">
+                    {"<"}Full Stack Typescript Developer{"/>"}
                   </span>
                   <AnimateIn>
-                    That builds web and native apps, deploys them to production, and cares about the
+                    <span className="text-[#73808d] dark:text-[#8C7F72]">
+                      {"//"} That builds web and native apps, deploys them to production, and cares about the
                     people who use them.
+                    </span>
                   </AnimateIn>
                 </AnimateIn>
               </H>
