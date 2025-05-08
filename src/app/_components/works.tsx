@@ -1,8 +1,8 @@
 import { Project } from '@/interfaces/project'
-import ProjectPreview from '_c/project-preview'
-import H from '_c/h'
 import Container from '_c/container'
 import FIP from '_c/fade-in-and-up'
+import H from '_c/h'
+import ProjectPreview from '_c/project-preview'
 
 // import ScrollContainer from "./scroll-container";
 type Props = {
@@ -32,3 +32,8 @@ export function Works({ projects }: Props) {
     </Container>
   )
 }
+
+
+// TODO: Add infinite scroll function such that the first project shows, then the next.
+// Bonus points for updating the url, such that the GA registers another page view
+
