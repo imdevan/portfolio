@@ -18,6 +18,6 @@ dist/
 .vercel
 
 # MDX files (to preserve comments and special formatting)
-*.mdx
+**/*.mdx
 _projects/
 _notes/
