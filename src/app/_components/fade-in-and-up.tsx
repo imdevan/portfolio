@@ -1,4 +1,4 @@
-import * as motion from 'motion/react-client'
+import {div as MD} from 'motion/react-client'
 
 type Props = {
   children: React.ReactNode // To support any valid React content inside the header
@@ -18,7 +18,7 @@ const FadeInUp = ({
   ease = 'easeInOut',
 }: Props) => {
   return (
-    <motion.div
+    <MD
       className={className}
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ const FadeInUp = ({
       viewport={{ once: true }}
     >
       {children}
-    </motion.div>
+    </MD>
   )
 }
 
