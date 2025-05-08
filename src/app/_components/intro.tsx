@@ -26,19 +26,21 @@ export function Intro() {
 
           <AnimateIn>
             <Container>
-              <H s={2} className={classNames(firaCode.className, 'text-2xl md:text-3xl')}>
                 <AnimateIn>
+              <H s={2} className={classNames(firaCode.className, 'text-2xl md:text-3xl mb-4')}>
                   <span className="dark:text-[#e26460] text-[#e26460]">
                     {"<"}Full Stack Typescript Developer{"/>"}
                   </span>
+              </H>
                   <AnimateIn>
-                    <span className="text-[#73808d] dark:text-[#8C7F72]">
+              <H s={2} className={classNames(firaCode.className, 'text-2xl md:text-3xl')}>
+              <span className="opacity-80">
                       {"//"} That builds web and native apps, deploys them to production, and cares about the
                     people who use them.
                     </span>
+              </H>
                   </AnimateIn>
                 </AnimateIn>
-              </H>
             </Container>
           </AnimateIn>
         </AnimateIn>
