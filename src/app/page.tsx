@@ -8,7 +8,7 @@ export default function Index() {
 
   return (
     <>
-      <Header link={false} />
+      <Header />
 
       <Intro />
 
