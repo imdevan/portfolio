@@ -43,7 +43,7 @@ const AnimatedMenu = () => {
           x: isOpen ? 0 : -20,
         }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
-        className="absolute left-0 top-full mt-2 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm rounded-lg p-4 shadow-lg"
+        className="absolute left-0 top-full p-4 pl-0"
       >
         <MD
           initial={{ opacity: 0, x: -20 }}
