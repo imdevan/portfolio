@@ -1,0 +1,155 @@
+---
+
+title: '20 Questions to Ask in a Client Interview'
+subtitle: 'What to ask when you’re trying to build the right thing, the right way'
+description: 'A retrospective on a consulting interview that pushed me to revisit my approach to client discovery, communication, and cost modeling.'
+date: '2025-05-22'
+published: true
+---
+
+import To from "_c/to";
+import Comment from "_c/comment";
+import ImageSlider from "_c/image-slider";
+
+## Introduction
+
+Ahead of a recent interview with a consulting company, I found myself revisiting a question I've grappled with for years: *How do you explain technical decisions to someone non-technical?* Or maybe more pointedly: *How do you communicate what you're building in a way that shows its value to your client?*
+
+As a freelance and consulting engineer, I’ve worked with early-stage startups, large orgs, and everything in between. I’ve had to bridge this gap over and over again. This interview pushed me to synthesize a lot of what I’ve learned, so I decided to turn it into a blog post.
+
+## The Setup
+
+The interview format was interesting. It simulated an initial client meeting, asking how I’d gather requirements, communicate architecture, and clarify the scope of a project. I wanted to impress, so I came in with a playbook: visuals, questions, and even a cost estimation tool I built using an AI UI generator.
+
+Here’s a breakdown of my approach.
+
+---
+
+## High level overview
+
+### Requirements Gathering
+
+I started by pulling together the types of questions I’ve asked clients in the past. It quickly became clear that 20+ questions would never fit into a one-hour call, but they’re the kind of questions that guide my thinking. Think of them like modular prompts I can pull from depending on the client and project.
+
+### Visual Thinking: Diagramming
+
+One of the most effective ways to bridge the tech-client gap is with visuals. Here’s a diagram I brought to the interview (insert your image here).
+
+It outlines a modern JavaScript stack with CI/CD, frontend deployments to Expo or a Remix/Next.js instance, and an optional microservice backend architecture. For most clients, this is a great way to start the conversation around “what lives where” and “how things talk to each other.”
+
+### Anticipating the Money Question
+
+Although cost didn’t come up in this interview, it’s something I always try to be prepared for. Clients often ask, *“So what will this actually cost to build and run?”*
+
+## The 21 Questions: Requirements Gathering
+
+These are the questions I came in with, organized by category and numbered.
+
+### Pre-Client Interview
+
+0. <span>0. </span>What do we already know about the client?
+<Comment>This is the biggest question I want to ask before going into any client interview. It sets the context and ensures you don’t ask questions you should already know the answers to.</Comment>
+
+### Goals & Constraints
+
+1. <span>1. </span>What is the core problem you’re trying to solve?
+<Comment>Helps uncover the real business need beyond feature requests.</Comment>
+2. <span>2. </span>What kind of discovery or validation work, if any, has been done on this idea so far?
+<Comment>Indicates how much confidence the client has in their solution and how much learning still needs to happen.</Comment>
+3. <span>3. </span>What would success look like for this project?
+<Comment>Reveals how the client measures impact or return on investment.</Comment>
+4. <span>4. </span>Are there any technical constraints?
+<Comment>Prevents misalignment on architecture or infrastructure early on.</Comment>
+5. <span>5. </span>Does the project need to run on existing infrastructure?
+<Comment>Helps avoid surprises and scope creep when integrating with legacy systems.</Comment>
+6. <span>6. </span>What would a successful project handoff look like for you?
+<Comment>Clarifies expectations for documentation, ownership, and training post-build.</Comment>
+7. <span>7. </span>What is your timeline?
+<Comment>Affects technical choices and helps define MVP scope.</Comment>
+8. <span>8. </span>Do you have a budget in mind?
+<Comment>Shapes tradeoffs and solution design from day one.</Comment>
+
+### Users & Access
+
+9. <span>9. </span>Who are the different types of users?
+<Comment>Guides UX decisions and permissions architecture.</Comment>
+10. <span>10. </span>What devices do they typically use?
+<Comment>Helps prioritize platform-specific functionality and performance constraints.</Comment>
+11. <span>11. </span>Are there any accessibility or language requirements?
+<Comment>Ensures you’re not leaving key user segments behind.</Comment>
+12. <span>12. </span>How many users do you anticipate at launch?
+<Comment>Helps estimate load and determine minimum infrastructure needs.</Comment>
+13. <span>13. </span>How many users do you anticipate post-launch?
+<Comment>Informs scalability planning and long-term architecture choices.</Comment>
+
+### Features & Functionality
+
+14. <span>14. </span>What are the core features you imagine?
+<Comment>Defines the shape and scope of the MVP.</Comment>
+15. <span>15. </span>What are the most common workflows?
+<Comment>Centers the build around real user goals, not just interface screens.</Comment>
+
+### Security & Compliance
+
+16. <span>16. </span>Do we need to worry about HIPAA, GDPR, or similar standards?
+<Comment>Compliance needs can dramatically affect design and hosting decisions.</Comment>
+17. <span>17. </span>Will any sensitive data be collected (e.g., medical info, addresses)?
+<Comment>Triggers risk mitigation work like encryption, secure audit logs, etc.</Comment>
+
+### Tech & Maintenance
+
+18. <span>18. </span>Do you or your team have any tech stack preferences?
+<Comment>Aligns with internal team comfort and existing tooling.</Comment>
+19. <span>19. </span>Are there third-party services or APIs this needs to integrate with?
+<Comment>Integration work can impact both timeline and architecture complexity.</Comment>
+20. <span>20. </span>Who will maintain the system after it launches?
+<Comment>Affects codebase design, documentation, and support strategy.</Comment>
+
+## On the Importance of Visual Storytelling
+
+When working with clients, especially those who are not deeply technical, words often fall short. That is where visuals come in.
+
+For this interview, I created a quick sketch using Excalidraw to illustrate how a modern JavaScript stack might be assembled for a greenfield project. The goal was not to show off every technical detail, but to provide a common reference point — something both technical and non-technical people could look at and say, “Okay, I see how this fits together.”
+
+In a client setting, I would likely upgrade the fidelity using a tool like diagrams.net (formerly draw.io). It supports better layering, annotation, and export options that make it easier to hand off or revisit later. But for early-stage conversations or discovery interviews, the speed and flexibility of Excalidraw made it ideal.
+
+<img src="https://res.cloudinary.com/bisonstudio/image/upload/v1748049599/Projects/excalidraw-arch-diagram-v5.jpg" alt='exalidraw diagram'/>
+
+Visuals do not just clarify, they validate. They turn abstract conversations into something concrete. If there is one habit I would recommend to any engineer who wants to get better at client communication, it is this: make more diagrams.
+
+## “So what will this actually cost to build and run?”
+
+Back when I was freelancing, I used to browse agency sites and noticed many had price calculators. So I built my own using <To a='https://www.loveable.dev'>Loveable</To>. It’s a quick, back-of-the-napkin tool I’d actually use live in a meeting to help clients estimate infrastructure and engineering costs.
+
+Turns out Loveable is great at rapidly prototyping UI with Radix and vanilla React. I hit some hallucination walls, but with a bit of cleanup, the result was something pretty slick.
+
+I had my thoughts, and I will definitely be writting a <To a='/notes/my-experience-with-loveable'>follow up article</To> about it in the near future.
+
+<ImageSlider
+slides={[
+"v1748052116/Portfolio/Notes/client-interview-questions/FireShot_Capture_081_-_Project_Price_Calculator_-_agency-price-calculator.vercel.app.png",
+"v1748052117/Portfolio/Notes/client-interview-questions/FireShot_Capture_080_-_Project_Price_Calculator_-_agency-price-calculator.vercel.app.png",
+]}
+/>
+
+<div class='spaced text-center'>
+    <To a='https://agency-price-calculator.vercel.app/'>Check it out</To>
+</div>
+
+## Lessons Learned
+
+Despite the prep, the interview skewed much more toward traditional system design with a strong emphasis on database schema and performance. One key topic was how I’d structure data for surveys with nested conditional questions.
+
+I reached for flexibility and suggested JSON objects. The interviewer noted this could work, but might be suboptimal. We didn’t get to refine the structure together in the limited time, but it reminded me that system design interviews are often database design interviews in disguise.
+
+## Final Thoughts
+
+I didn’t get everything perfect. But I walked away with a better sense of how to balance:
+
+* Clarifying business needs
+* Communicating architecture visually
+* Anticipating client concerns (cost, timeline, handoff)
+
+
+And I got to learn a few things along the way.
+
