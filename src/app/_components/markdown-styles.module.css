@@ -34,8 +34,12 @@
   @apply text-2xl mt-8 mb-4 leading-snug;
 }
 
+.markdown .spaced {
+  @apply mx-auto my-6 md:my-10 lg:my-20;
+}
+
 .markdown img {
-  @apply rounded max-h-720 max-w-full md:max-w-720 mx-auto;
+  @apply rounded max-h-720 max-w-full md:max-w-720 mx-auto my-6 md:my-10 lg:my-20;
 }
 
 .markdown p {
