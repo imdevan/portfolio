@@ -1,6 +1,10 @@
 import { getAllProjects, getProjectBySlug } from '@/lib/api'
 import AnimateIn from '_c/animate-in'
 import Container from '_c/container'
+import H from '_c/h'
+import FIP from '_c/fade-in-and-up'
+
+import Section from '_c/section'
 import ProjectBody from '_c/project-body'
 import { ProjectHeader } from '_c/project-header'
 import ProjectNextUp from '_c/project-next-up'
@@ -13,6 +17,7 @@ export default async function Project(props: Props) {
     slug: p.slug,
     title: p.title,
     coverImage: p.coverImage,
+    tech: p.tech
   }))
   const project = getProjectBySlug(params.slug)
   const projectExported = await import(`_projects/${params.slug}.mdx`)
@@ -36,9 +41,30 @@ export default async function Project(props: Props) {
             <Project />
           </ProjectBody>
 
-          <AnimateIn>
-            <ProjectNextUp slug={params.slug} projects={allProjects} />
-          </AnimateIn>
+          {project.tech ? (
+            <AnimateIn>
+              <Section className="tools">
+                <FIP>
+                  <H>The Technology</H>
+                </FIP>
+
+                {project.tech.map(tech => (
+                  <FIP>
+                    - {tech}
+                  </FIP>
+                ))}
+              </Section>
+
+              <AnimateIn>
+                <ProjectNextUp slug={params.slug} projects={allProjects} />
+              </AnimateIn>
+            </AnimateIn>
+          ) : (
+            <AnimateIn>
+              <ProjectNextUp slug={params.slug} projects={allProjects} />
+            </AnimateIn>
+          )}
+
         </AnimateIn>
       </article>
     </Container>
@@ -67,10 +93,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       title,
       images: project.ogImage?.url
         ? [
-            {
-              url: project.ogImage.url,
-            },
-          ]
+          {
+            url: project.ogImage.url,
+          },
+        ]
         : [],
     },
   }

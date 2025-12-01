@@ -11,4 +11,5 @@ export type Project = {
   preview?: boolean
   externalBody?: boolean
   draft?: boolean
+  tech?: string[]
 }
