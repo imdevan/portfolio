@@ -84,3 +84,19 @@
   height: 100%;
   opacity: 0.6;
 }
+
+.markdown pre {
+  @apply bg-gray-100 dark:bg-zinc-800 rounded-lg p-4 overflow-x-auto my-4 shadow-xl;
+}
+
+.markdown code {
+  @apply font-mono text-sm;
+}
+
+.markdown pre code {
+  @apply bg-transparent p-0;
+}
+
+.markdown :not(pre) > code {
+  @apply bg-gray-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-sm;
+}
