@@ -53,6 +53,19 @@ const AnimatedMenu = ({ isVisible }: Props) => {
           Notes
         </Link>
       </MD>
+
+      <MD
+        initial={{ opacity: 0, x: -20 }}
+        animate={{
+          opacity: isVisible ? 1 : 0,
+          x: isVisible ? 0 : -20,
+        }}
+        transition={{ duration: 0.2, ease: 'easeInOut', delay: 0.3 }}
+      >
+        <Link href="/side-projects" className="hover:underline whitespace-nowrap">
+          Projects
+        </Link>
+      </MD>
     </div>
   )
 }

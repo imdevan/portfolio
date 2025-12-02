@@ -1,11 +1,13 @@
 import { Project } from '@/interfaces/project'
 import { Note } from '@/interfaces/note'
+import { SideProject } from '@/interfaces/side-project'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { join } from 'path'
 
 const projectsDirectory = join(process.cwd(), '_projects')
 const notesDirectory = join(process.cwd(), '_notes')
+const sideProjectsDirectory = join(process.cwd(), '_side-projects')
 
 export function getProjectSlugs() {
   const projectSlugs = fs.readdirSync(projectsDirectory).filter((slug) => /\.mdx$/.test(slug))
@@ -53,4 +55,33 @@ export function getAllNotes() {
     .filter((note) => note.published)
     .sort((a, b) => (a.date > b.date ? -1 : 1))
   return notes
+}
+
+export function getSideProjectSlugs() {
+  if (!fs.existsSync(sideProjectsDirectory)) {
+    return []
+  }
+  const sideProjectSlugs = fs.readdirSync(sideProjectsDirectory).filter((slug) => /\.mdx$/.test(slug))
+  return sideProjectSlugs
+}
+
+export function getSideProjectBySlug(slug: string) {
+  const realSlug = slug.replace(/\.mdx$/, '')
+  const fullPath = join(sideProjectsDirectory, `${realSlug}.mdx`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
+
+  return { ...data, slug: realSlug, content } as SideProject
+}
+
+export function getAllSideProjects(): SideProject[] {
+  const slugs = getSideProjectSlugs()
+  const sideProjects = slugs
+    .map((slug) => getSideProjectBySlug(slug))
+    .sort((a, b) => {
+      const dateA = a.date || '0'
+      const dateB = b.date || '0'
+      return dateA > dateB ? -1 : 1
+    })
+  return sideProjects
 }

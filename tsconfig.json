@@ -22,6 +22,7 @@
       "@/*": ["./src/*"],
       "_c/*": ["./src/app/_components/*"],
       "_projects/*": ["./_projects/*"],
+      "_side-projects/*": ["./_side-projects/*"],
       "_public/*": ["./public/*"]
     },
     "target": "ES2022"
