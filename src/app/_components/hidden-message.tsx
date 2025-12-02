@@ -1,6 +1,5 @@
 'use client'
 
-import AnimatedMenu from './AnimatedMenu'
 import { useEffect, useState } from 'react'
 
 type Props = {
