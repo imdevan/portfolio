@@ -4,6 +4,7 @@ export type SideProject = {
   description?: string
   project_url?: string
   cta_url?: string | string[]
+  external_url?: string
   content: string
   date?: string
 }

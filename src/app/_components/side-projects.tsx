@@ -27,6 +27,7 @@ export function SideProjects({ sideProjects }: Props) {
               title={sideProject.title}
               description={sideProject.description}
               slug={sideProject.slug}
+              external_url={sideProject.external_url}
             />
           ))}
         </div>
