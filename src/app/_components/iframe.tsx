@@ -11,6 +11,7 @@ type Props = {
 
 const Iframe = ({ src, className }: Props) => {
   const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop')
+  const [isLoaded, setIsLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
 
@@ -20,8 +21,10 @@ const Iframe = ({ src, className }: Props) => {
   // Ensure src has protocol
   const iframeSrc = src.startsWith('http') ? src : `https://${src}`
 
-  // Calculate scale based on container width
+  // Calculate scale based on container width (only when iframe is loaded)
   useEffect(() => {
+    if (!isLoaded) return
+
     const updateScale = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth
@@ -38,7 +41,7 @@ const Iframe = ({ src, className }: Props) => {
       clearTimeout(timeoutId)
       window.removeEventListener('resize', updateScale)
     }
-  }, [viewMode])
+  }, [viewMode, isLoaded])
 
   // Calculate iframe height based on aspect ratio
   // Desktop: 16:9 aspect ratio means width:height = 16:9, so height = width * 9/16
@@ -49,45 +52,8 @@ const Iframe = ({ src, className }: Props) => {
 
   return (
     <div className={cn('flex flex-col items-center gap-4 my-8 w-full', className)}>
-      {/* Iframe container */}
-      <div className="w-full flex justify-center">
-        <div
-          ref={containerRef}
-          className={cn(
-            'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg bg-white dark:bg-zinc-900 relative',
-            // Desktop responsive widths
-            viewMode === 'desktop' && [
-              'w-full sm:w-full md:w-[400px] lg:w-[600px] xl:w-[800px]',
-            ],
-            // Mobile responsive widths
-            viewMode === 'mobile' && [
-              'max-w-[400px] sm:max-w-[400px] md:w-[400px] lg:w-[300px] xl:w-[300px]',
-            ]
-          )}
-          style={{
-            // Calculate height based on aspect ratio
-            aspectRatio: viewMode === 'desktop' ? '16/9' : '9/16',
-          }}
-        >
-          <div className="w-full h-full relative overflow-hidden">
-            <iframe
-              src={iframeSrc}
-              className="border-0 absolute top-0 left-0"
-              style={{
-                width: `${perceivedWidth}px`,
-                height: `${iframeHeight}px`,
-                transform: `scale(${scale})`,
-                transformOrigin: 'top left',
-              }}
-              title={`Preview of ${src}`}
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Toggle buttons - moved below iframe */}
-      <div className="flex gap-2 p-1 bg-gray-100 dark:bg-zinc-800 rounded-lg">
+            {/* Toggle buttons - moved below iframe */}
+            <div className="flex gap-2 p-1 bg-gray-100 dark:bg-zinc-800 rounded-lg">
         <button
           onClick={() => setViewMode('desktop')}
           className={cn(
@@ -115,6 +81,71 @@ const Iframe = ({ src, className }: Props) => {
           <span className="text-sm font-medium">Mobile</span>
         </button>
       </div>
+
+      {/* Iframe container */}
+      <div className="w-full flex justify-center">
+        {!isLoaded ? (
+          <div
+            className={cn(
+              'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg bg-gray-50 dark:bg-zinc-800 relative flex items-center justify-center',
+              // Desktop responsive widths
+              viewMode === 'desktop' && [
+                'w-full sm:w-full md:w-[600px] lg:w-[800px] xl:w-[800px]',
+              ],
+              // Mobile responsive widths
+              viewMode === 'mobile' && [
+                'max-w-[400px] sm:max-w-[400px] md:w-[400px] lg:w-[300px] xl:w-[300px]',
+              ]
+            )}
+            style={{
+              // Calculate height based on aspect ratio
+              aspectRatio: viewMode === 'desktop' ? '16/9' : '9/16',
+            }}
+          >
+            <button
+              onClick={() => setIsLoaded(true)}
+              className="px-6 py-3 bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all font-medium border border-gray-200 dark:border-zinc-600 hover:bg-gray-50 dark:hover:bg-zinc-600"
+            >
+              Load Demo
+            </button>
+          </div>
+        ) : (
+          <div
+            ref={containerRef}
+            className={cn(
+              'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg bg-white dark:bg-zinc-900 relative',
+              // Desktop responsive widths
+              viewMode === 'desktop' && [
+                'w-full sm:w-full md:w-[600px] lg:w-[800px] xl:w-[800px]',
+              ],
+              // Mobile responsive widths
+              viewMode === 'mobile' && [
+                'max-w-[400px] sm:max-w-[400px] md:w-[400px] lg:w-[300px] xl:w-[300px]',
+              ]
+            )}
+            style={{
+              // Calculate height based on aspect ratio
+              aspectRatio: viewMode === 'desktop' ? '16/9' : '9/16',
+            }}
+          >
+            <div className="w-full h-full relative overflow-hidden">
+              <iframe
+                src={iframeSrc}
+                className="border-0 absolute top-0 left-0"
+                style={{
+                  width: `${perceivedWidth}px`,
+                  height: `${iframeHeight}px`,
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'top left',
+                }}
+                title={`Preview of ${src}`}
+                loading="lazy"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
     </div>
   )
 }
