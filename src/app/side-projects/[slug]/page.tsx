@@ -40,7 +40,7 @@ export default async function SideProject(props: Props) {
               <SideProjectContent />
             </ProjectBody>
 
-            {(sideProject.project_url || sideProject.cta_url) && (
+            {/* {(sideProject.project_url || sideProject.cta_url) && (
               <AnimateIn>
                 <Section className="links">
                   <FIP>
@@ -73,7 +73,7 @@ export default async function SideProject(props: Props) {
                   )}
                 </Section>
               </AnimateIn>
-            )}
+            )} */}
 
             <AnimateIn>
               <SideProjectNextUp slug={params.slug} sideProjects={allSideProjects} />
