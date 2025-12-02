@@ -9,6 +9,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import SideProjectNextUp from '_c/side-project-next-up'
 import To from '_c/to'
+import { SideProjectHeader } from '_c/side-project-header'
 
 export default async function SideProject(props: Props) {
   const params = await props.params
@@ -28,17 +29,12 @@ export default async function SideProject(props: Props) {
     <Container>
       <article className="mb-16 md:mb-24 lg:mb-32">
         <AnimateIn>
+          <SideProjectHeader
+            title={sideProject.title}
+            description={sideProject.description}
+          />
+
           <div className="max-w-3xl mx-auto">
-            <div className="mb-16 md:mb-24 lg:mb-32 text-center">
-              <H>{sideProject.title}</H>
-              {sideProject.description && (
-                <FIP>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mt-4">
-                    {sideProject.description}
-                  </p>
-                </FIP>
-              )}
-            </div>
 
             <ProjectBody className="my-16 md:my-24 lg:my-32 lg:mb-48">
               <SideProjectContent />
