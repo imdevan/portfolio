@@ -7,10 +7,11 @@ import cn from 'classnames'
 type Props = {
   src: string
   className?: string
+  mobile?: boolean
 }
 
-const Iframe = ({ src, className }: Props) => {
-  const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop')
+const Iframe = ({ src, className, mobile = false }: Props) => {
+  const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>(mobile ? 'mobile' : 'desktop')
   const [isLoaded, setIsLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
