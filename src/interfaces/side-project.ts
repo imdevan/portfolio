@@ -7,6 +7,7 @@ export type SideProject = {
   external_url?: string
   content: string
   date?: string
+  order?: number
 }
 
 

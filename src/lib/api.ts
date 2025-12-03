@@ -82,11 +82,11 @@ export function getAllSideProjects(): SideProject[] {
   const slugs = getSideProjectSlugs()
   const sideProjects = slugs
     .map((slug) => getSideProjectBySlug(slug))
-    // sort side projects by date in descending order
+    // sort side projects by order in ascending order
     .sort((sideProject1, sideProject2) => {
-      const date1 = sideProject1.date || '0'
-      const date2 = sideProject2.date || '0'
-      return date1 > date2 ? -1 : 1
+      const order1 = sideProject1.order ?? Number.MAX_SAFE_INTEGER
+      const order2 = sideProject2.order ?? Number.MAX_SAFE_INTEGER
+      return order1 - order2
     })
   return sideProjects
 }
