@@ -1,11 +1,13 @@
 import type { MDXComponents } from 'mdx/types'
 import { Fira_Code } from 'next/font/google'
+import Video from '_c/video'
 
 const firaCode = Fira_Code({ subsets: ['latin'] })
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
+    Video,
     pre: ({ children, ...props }) => (
       <pre className={`${firaCode.className} bg-gray-100 dark:bg-zinc-800 rounded-lg p-4 overflow-x-auto my-4`} {...props}>
         {children}
