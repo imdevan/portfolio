@@ -8,16 +8,21 @@ type Props = {
   src: string
   className?: string
   mobile?: boolean
+  hideControls?: boolean
+  buttonText?: string
 }
 
-const Iframe = ({ src, className, mobile = false }: Props) => {
+const Iframe = ({ src, className, mobile = false, hideControls = false, buttonText = 'Load Demo' }: Props) => {
   const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>(mobile ? 'mobile' : 'desktop')
   const [isLoaded, setIsLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
 
+  // If hideControls is true, force desktop view
+  const effectiveViewMode = hideControls ? 'desktop' : viewMode
+
   // Perceived width is 1200px for desktop, 640px for mobile
-  const perceivedWidth = viewMode === 'desktop' ? 1200 : 640
+  const perceivedWidth = effectiveViewMode === 'desktop' ? 1200 : 640
 
   // Ensure src has protocol
   const iframeSrc = src.startsWith('http') ? src : `https://${src}`
@@ -29,7 +34,7 @@ const Iframe = ({ src, className, mobile = false }: Props) => {
     const updateScale = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth
-        const currentPerceivedWidth = viewMode === 'desktop' ? 1200 : 640
+        const currentPerceivedWidth = effectiveViewMode === 'desktop' ? 1200 : 640
         const newScale = containerWidth / currentPerceivedWidth
         setScale(newScale)
       }
@@ -42,46 +47,48 @@ const Iframe = ({ src, className, mobile = false }: Props) => {
       clearTimeout(timeoutId)
       window.removeEventListener('resize', updateScale)
     }
-  }, [viewMode, isLoaded])
+  }, [effectiveViewMode, isLoaded, hideControls])
 
   // Calculate iframe height based on aspect ratio
   // Desktop: 16:9 aspect ratio means width:height = 16:9, so height = width * 9/16
   // Mobile: 9:16 aspect ratio means width:height = 9:16, so height = width * 16/9
-  const iframeHeight = viewMode === 'desktop'
+  const iframeHeight = effectiveViewMode === 'desktop'
     ? perceivedWidth * (9 / 16)  // Desktop: 1200 * 9/16 = 675px
     : perceivedWidth * (16 / 9)  // Mobile: 640 * 16/9 = 1137.78px
 
   return (
     <div className={cn('flex flex-col items-center gap-4 my-8 w-full', className)}>
-            {/* Toggle buttons - moved below iframe */}
-            <div className="flex gap-2 p-1 bg-gray-100 dark:bg-zinc-800 rounded-lg">
-        <button
-          onClick={() => setViewMode('desktop')}
-          className={cn(
-            'flex items-center gap-2 px-4 py-2 rounded-md transition-all',
-            viewMode === 'desktop'
-              ? 'bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100 shadow-sm'
-              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
-          )}
-          aria-label="Desktop view"
-        >
-          <Monitor size={18} />
-          <span className="text-sm font-medium">Desktop</span>
-        </button>
-        <button
-          onClick={() => setViewMode('mobile')}
-          className={cn(
-            'flex items-center gap-2 px-4 py-2 rounded-md transition-all',
-            viewMode === 'mobile'
-              ? 'bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100 shadow-sm'
-              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
-          )}
-          aria-label="Mobile view"
-        >
-          <Smartphone size={18} />
-          <span className="text-sm font-medium">Mobile</span>
-        </button>
-      </div>
+      {/* Toggle buttons - only show if hideControls is false */}
+      {!hideControls && (
+        <div className="flex gap-2 p-1 bg-gray-100 dark:bg-zinc-800 rounded-lg">
+          <button
+            onClick={() => setViewMode('desktop')}
+            className={cn(
+              'flex items-center gap-2 px-4 py-2 rounded-md transition-all',
+              viewMode === 'desktop'
+                ? 'bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100 shadow-sm'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+            )}
+            aria-label="Desktop view"
+          >
+            <Monitor size={18} />
+            <span className="text-sm font-medium">Desktop</span>
+          </button>
+          <button
+            onClick={() => setViewMode('mobile')}
+            className={cn(
+              'flex items-center gap-2 px-4 py-2 rounded-md transition-all',
+              viewMode === 'mobile'
+                ? 'bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100 shadow-sm'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+            )}
+            aria-label="Mobile view"
+          >
+            <Smartphone size={18} />
+            <span className="text-sm font-medium">Mobile</span>
+          </button>
+        </div>
+      )}
 
       {/* Iframe container */}
       <div className="w-full flex justify-center">
@@ -90,24 +97,24 @@ const Iframe = ({ src, className, mobile = false }: Props) => {
             className={cn(
               'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg bg-gray-50 dark:bg-zinc-800 relative flex items-center justify-center',
               // Desktop responsive widths
-              viewMode === 'desktop' && [
+              effectiveViewMode === 'desktop' && [
                 'w-full sm:w-full md:w-[600px] lg:w-[800px] xl:w-[800px]',
               ],
               // Mobile responsive widths
-              viewMode === 'mobile' && [
+              effectiveViewMode === 'mobile' && [
                 'max-w-[400px] sm:max-w-[400px] md:w-[400px] lg:w-[300px] xl:w-[300px]',
               ]
             )}
             style={{
               // Calculate height based on aspect ratio
-              aspectRatio: viewMode === 'desktop' ? '16/9' : '9/16',
+              aspectRatio: effectiveViewMode === 'desktop' ? '16/9' : '9/16',
             }}
           >
             <button
               onClick={() => setIsLoaded(true)}
               className="px-6 py-3 bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all font-medium border border-gray-200 dark:border-zinc-600 hover:bg-gray-50 dark:hover:bg-zinc-600"
             >
-              Load Demo
+              {buttonText}
             </button>
           </div>
         ) : (
@@ -116,17 +123,17 @@ const Iframe = ({ src, className, mobile = false }: Props) => {
             className={cn(
               'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg bg-white dark:bg-zinc-900 relative',
               // Desktop responsive widths
-              viewMode === 'desktop' && [
+              effectiveViewMode === 'desktop' && [
                 'w-full sm:w-full md:w-[600px] lg:w-[800px] xl:w-[800px]',
               ],
               // Mobile responsive widths
-              viewMode === 'mobile' && [
+              effectiveViewMode === 'mobile' && [
                 'max-w-[400px] sm:max-w-[400px] md:w-[400px] lg:w-[300px] xl:w-[300px]',
               ]
             )}
             style={{
               // Calculate height based on aspect ratio
-              aspectRatio: viewMode === 'desktop' ? '16/9' : '9/16',
+              aspectRatio: effectiveViewMode === 'desktop' ? '16/9' : '9/16',
             }}
           >
             <div className="w-full h-full relative overflow-hidden">
