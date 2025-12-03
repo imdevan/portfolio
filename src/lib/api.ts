@@ -52,9 +52,13 @@ export function getAllNotes() {
   const slugs = getNoteSlugs()
   const notes = slugs
     .map((slug) => getNoteBySlug(slug))
-    .filter((note) => note.published)
     .sort((a, b) => (a.date > b.date ? -1 : 1))
-  return notes
+
+  if (process.env.NODE_ENV === 'production') {
+    return notes.filter((note) => note.published)
+  } else {
+    return notes
+  }
 }
 
 export function getSideProjectSlugs() {
