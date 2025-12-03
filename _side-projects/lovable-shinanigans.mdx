@@ -1,7 +1,7 @@
 ---
 title: "Lovable Shinanigans"
 cta_url: ["devan.gg", "devan.gg/get-dance-partner", "devan.gg/what-is-pypo"]
-description: "Made with ❤️"
+description: "A collection of projects built with Lovable, plus a deployment script that makes GitHub Pages actually work"
 order: 3
 ---
 
@@ -12,13 +12,25 @@ import Iframe from "_c/iframe"
 
 <Section>
   <FIP>
+    Lovable changed how I think about prototyping. What used to take days of setup and configuration now happens in minutes. I can describe what I want, watch it materialize, then iterate until it feels right.
+  </FIP>
+  <FIP>
+    This collection represents my experiments with the platform. Some are polished landing pages. Others are rough prototypes that capture an idea before it fades. All of them shipped faster than I thought possible.
+  </FIP>
+</Section>
+
+<Section>
+  <FIP>
     # <To a="https://devan.gg">devan.gg</To>
   </FIP>
 </Section>
 
 <Section>
   <FIP>
-    This project I created to replace my github.io landing page as a go to link in the event that someone gets lost while navigating around one of my github pages.
+    I needed a better home base than my GitHub Pages landing page. Something that felt intentional, not like an afterthought. When someone clicks through from one of my repositories, I want them to understand who I am and where they can find more of my work.
+  </FIP>
+  <FIP>
+    This became my digital business card. Clean, focused, and quick to load. It's the first thing I built with Lovable, and it taught me how the platform thinks about component composition and styling.
   </FIP>
 </Section>
 
@@ -36,7 +48,10 @@ import Iframe from "_c/iframe"
 
 <Section>
   <FIP>
-    This project I created to replace my github.io landing page as a go to link in the event that someone gets lost while navigating around one of my github pages.
+    Dance Partner started as an idea for connecting dancers with practice partners. The concept needed a landing page to test interest before I committed to building the full app. Lovable let me go from concept to live page in an afternoon.
+  </FIP>
+  <FIP>
+    The page captures the energy I wanted for the project. It's playful but clear about what the app does. Most importantly, it exists. Without Lovable, this would have stayed in my notes app for months.
   </FIP>
 </Section>
 
@@ -54,7 +69,10 @@ import Iframe from "_c/iframe"
 
 <Section>
   <FIP>
-    Very rough take of what will be become Dance Partner.
+    This is the mobile prototype I built to explore the actual app experience. It's rough. The interactions are basic. But it proved the concept works on a phone screen, which was the question I needed answered.
+  </FIP>
+  <FIP>
+    Sometimes you need to see something in your hand before you know if it's worth pursuing. This prototype gave me that clarity faster than building a full React Native app would have.
   </FIP>
 </Section>
 
@@ -72,7 +90,10 @@ import Iframe from "_c/iframe"
 
 <Section>
   <FIP>
-    Landing page for PyPo.
+    PyPo is a Python runtime for Expo. The name is silly, but the project is serious. I needed a landing page that explained what it does without getting lost in technical details.
+  </FIP>
+  <FIP>
+    The page walks through the problem PyPo solves and why it matters. It's structured to answer questions in order: what is this, why does it exist, how do I use it. Simple, but effective.
   </FIP>
 </Section>
 
@@ -86,35 +107,45 @@ import Iframe from "_c/iframe"
   <FIP>
     # lovely.sh
   </FIP>
+</Section>
 
+<Section>
   <FIP>
-    I made a script to easily get lovable pages ready to deploy to a github page.
+    Here's the thing about Lovable: it generates projects that expect to run at the root of a domain. GitHub Pages doesn't work that way unless you're using a custom domain or the special `username.github.io` repository format.
   </FIP>
-
   <FIP>
-    The script essentially tweaks the config and Browser Router to account for non-root github pages
-
-    I personally keep the script in my dot files which is called triggering the script in a lovable generated repo.
-
-    ```
-    ~/dotfiles/functions/lovable.sh
-    ```
-
-    The script will generate a `.github/workflows/deploy` script, update the `vite.config.ts`, `readme.md`, and `src/App.tsx`
-
-    I of course have an alias mapped to the script, so I just call
-
-    ```
-    lov
-    ```
-
-    from the lovable directory
-
+    After manually fixing the same deployment issues three times, I wrote a script to automate it. `lovely.sh` handles the configuration changes that make Lovable projects actually deploy to GitHub Pages.
   </FIP>
+</Section>
 
+<Section>
+  <FIP>
+    The script updates `vite.config.ts` to set the correct base path, modifies the React Router configuration to handle subdirectory routing, generates a GitHub Actions workflow for automatic deployments, and updates the README with deployment instructions.
+  </FIP>
+  <FIP>
+    I keep it in my dotfiles and call it with a simple alias: `lov`. Run it from a Lovable-generated directory, and you're ready to deploy. No more wrestling with base paths or router configurations.
+  </FIP>
+</Section>
+
+<Section>
   <FIP>
     <p className="text-center">
-    <To a="https://github.com/imdevan/dotfiles/blob/main/functions/scripts/lovely.sh">lovely.sh</To>
+      <To a="https://github.com/imdevan/dotfiles/blob/main/functions/scripts/lovely.sh">View lovely.sh on GitHub</To>
     </p>
+  </FIP>
+</Section>
+
+<Section>
+  <FIP>
+    ## What I Learned
+  </FIP>
+  <FIP>
+    Lovable excels at rapid iteration. The AI understands context well enough that I can describe changes in plain English and see them reflected immediately. This changes how I prototype. Instead of planning everything upfront, I can start building and refine as I go.
+  </FIP>
+  <FIP>
+    The platform isn't perfect. Generated code can be verbose. Some patterns feel repetitive. But the speed tradeoff is worth it for projects like these. I can validate ideas faster, which means I'm more willing to try things that might not work.
+  </FIP>
+  <FIP>
+    That willingness to experiment is what led to this collection. Each project taught me something about what Lovable does well and where it falls short. More importantly, each one shipped. Ideas became real things people could interact with, and that's the whole point.
   </FIP>
 </Section>
