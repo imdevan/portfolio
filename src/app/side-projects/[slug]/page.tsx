@@ -16,6 +16,8 @@ export default async function SideProject(props: Props) {
   const allSideProjects = getAllSideProjects().map((p) => ({
     slug: p.slug,
     title: p.title,
+    description: p.description,
+    external_url: p.external_url,
   }))
   const sideProject = getSideProjectBySlug(params.slug)
   const sideProjectExported = await import(`_side-projects/${params.slug}.mdx`)
