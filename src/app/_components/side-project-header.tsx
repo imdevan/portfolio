@@ -24,18 +24,35 @@ export function SideProjectHeader({ title, description }: Props) {
       <div className="flex flex-col justify-center items-center w-full h-screen">
         <AnimateIn>
           <ProjectTitle>{title}</ProjectTitle>
-          {description && (
-            <AnimateIn>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mt-4">
-                {description}
-              </p>
-            </AnimateIn>
-          )}
+          {/* {description && ( */}
+          {/*   <AnimateIn> */}
+          {/*     <p className="text-lg text-gray-600 dark:text-gray-400 mt-4"> */}
+          {/*       {description} */}
+          {/*     </p> */}
+          {/*   </AnimateIn> */}
+          {/* )} */}
         </AnimateIn>
       </div>
     </motion.div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
