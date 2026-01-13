@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { Monitor, Smartphone } from 'react-feather'
 import cn from 'classnames'
+import AnimatedGradientBg from './animated-gradient-bg'
 
 type Props = {
   src: string
@@ -10,11 +11,13 @@ type Props = {
   mobile?: boolean
   hideControls?: boolean
   buttonText?: string
+  gradientColors?: [string, string, string]
 }
 
-const Iframe = ({ src, className, mobile = false, hideControls = false, buttonText = 'Load Demo' }: Props) => {
+const Iframe = ({ src, className, mobile = false, hideControls = false, buttonText = 'Load Demo', gradientColors }: Props) => {
   const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>(mobile ? 'mobile' : 'desktop')
   const [isLoaded, setIsLoaded] = useState(false)
+  const [iframeLoaded, setIframeLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(1)
 
@@ -95,7 +98,7 @@ const Iframe = ({ src, className, mobile = false, hideControls = false, buttonTe
         {!isLoaded ? (
           <div
             className={cn(
-              'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg bg-gray-50 dark:bg-zinc-800 relative flex items-center justify-center',
+              'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg relative',
               // Desktop responsive widths
               effectiveViewMode === 'desktop' && [
                 'w-full sm:w-full md:w-[600px] lg:w-[800px] xl:w-[800px]',
@@ -110,18 +113,22 @@ const Iframe = ({ src, className, mobile = false, hideControls = false, buttonTe
               aspectRatio: effectiveViewMode === 'desktop' ? '16/9' : '9/16',
             }}
           >
-            <button
-              onClick={() => setIsLoaded(true)}
-              className="px-6 py-3 bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all font-medium border border-gray-200 dark:border-zinc-600 hover:bg-gray-50 dark:hover:bg-zinc-600"
-            >
-              {buttonText}
-            </button>
+            <AnimatedGradientBg colors={gradientColors}>
+              <div className="w-full h-full flex items-center justify-center">
+                <button
+                  onClick={() => setIsLoaded(true)}
+                  className="px-6 py-3 bg-white/80 dark:bg-zinc-700/80 backdrop-blur-md text-gray-900 dark:text-gray-100 rounded-lg shadow-lg hover:shadow-xl transition-all font-medium border border-white/20 dark:border-zinc-600/20 hover:bg-white/90 dark:hover:bg-zinc-600/90"
+                >
+                  {buttonText}
+                </button>
+              </div>
+            </AnimatedGradientBg>
           </div>
         ) : (
           <div
             ref={containerRef}
             className={cn(
-              'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg bg-white dark:bg-zinc-900 relative',
+              'border border-gray-200 dark:border-zinc-700 rounded-lg overflow-hidden shadow-lg relative',
               // Desktop responsive widths
               effectiveViewMode === 'desktop' && [
                 'w-full sm:w-full md:w-[600px] lg:w-[800px] xl:w-[800px]',
@@ -136,10 +143,13 @@ const Iframe = ({ src, className, mobile = false, hideControls = false, buttonTe
               aspectRatio: effectiveViewMode === 'desktop' ? '16/9' : '9/16',
             }}
           >
-            <div className="w-full h-full relative overflow-hidden">
+            <div className="absolute inset-0 z-0">
+              <AnimatedGradientBg colors={gradientColors} fadeOut={iframeLoaded} />
+            </div>
+            <div className="w-full h-full relative overflow-hidden z-10">
               <iframe
                 src={iframeSrc}
-                className="border-0 absolute top-0 left-0"
+                className="border-0 absolute top-0 left-0 bg-white dark:bg-zinc-900"
                 style={{
                   width: `${perceivedWidth}px`,
                   height: `${iframeHeight}px`,
@@ -148,6 +158,7 @@ const Iframe = ({ src, className, mobile = false, hideControls = false, buttonTe
                 }}
                 title={`Preview of ${src}`}
                 loading="lazy"
+                onLoad={() => setIframeLoaded(true)}
               />
             </div>
           </div>
