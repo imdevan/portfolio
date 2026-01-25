@@ -6,6 +6,13 @@ import cn from 'classnames'
 import { Roboto_Slab } from 'next/font/google'
 const robotoSlab = Roboto_Slab({ subsets: ['latin'] })
 
+const MENU_ITEMS = [
+  { href: '/contact', label: 'Contact' },
+  { href: '/notes', label: 'Notes' },
+  { href: '/side-projects', label: 'Projects' },
+  { href: '/resume', label: 'Resume' },
+]
+
 type Props = {
   isVisible: boolean
 }
@@ -28,44 +35,21 @@ const AnimatedMenu = ({ isVisible }: Props) => {
         </Link>
       </MD>
 
-      <MD
-        initial={{ opacity: 0, x: -20 }}
-        animate={{
-          opacity: isVisible ? 1 : 0,
-          x: isVisible ? 0 : -20,
-        }}
-        transition={{ duration: 0.2, ease: 'easeInOut', delay: 0.1 }}
-      >
-        <Link href="/contact" className="hover:underline whitespace-nowrap">
-          Contact
-        </Link>
-      </MD>
-
-      <MD
-        initial={{ opacity: 0, x: -20 }}
-        animate={{
-          opacity: isVisible ? 1 : 0,
-          x: isVisible ? 0 : -20,
-        }}
-        transition={{ duration: 0.2, ease: 'easeInOut', delay: 0.2 }}
-      >
-        <Link href="/notes" className="hover:underline whitespace-nowrap">
-          Notes
-        </Link>
-      </MD>
-
-      <MD
-        initial={{ opacity: 0, x: -20 }}
-        animate={{
-          opacity: isVisible ? 1 : 0,
-          x: isVisible ? 0 : -20,
-        }}
-        transition={{ duration: 0.2, ease: 'easeInOut', delay: 0.3 }}
-      >
-        <Link href="/side-projects" className="hover:underline whitespace-nowrap">
-          Projects
-        </Link>
-      </MD>
+      {MENU_ITEMS.map((item, index) => (
+        <MD
+          key={item.href}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{
+            opacity: isVisible ? 1 : 0,
+            x: isVisible ? 0 : -20,
+          }}
+          transition={{ duration: 0.2, ease: 'easeInOut', delay: 0.1 + (index * 0.1) }}
+        >
+          <Link href={item.href} className="hover:underline whitespace-nowrap">
+            {item.label}
+          </Link>
+        </MD>
+      ))}
     </div>
   )
 }
