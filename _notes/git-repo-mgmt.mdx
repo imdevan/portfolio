@@ -1,0 +1,135 @@
+---
+title: 'Git Quandries'
+subtitle: 'Git Problems and Solutions'
+description: 'A place to store my thoughts on sticky git issues.'
+date: '2026-02-19'
+published: true
+---
+
+# Diverting Fork
+
+I have a fork of a repo that has diverged.
+
+I want to push all changes except for those that involve a particular folder.
+
+To the original repo and rebase the fork on the old repo to ensure version control integrity.
+
+**Solution:** Pushing Fork Changes to Upstream Without a Folder Using `git filter-repo`
+
+## Prerequisites
+
+Install `git-filter-repo` if you don't have it:
+
+```bash
+pip install git-filter-repo
+```
+
+Verify it's available:
+
+```bash
+git filter-repo --version
+```
+
+## Step 1: Create a Working Branch
+
+Create a local copy of your fork's branch to rewrite — never rewrite directly on your main branch:
+
+```bash
+git checkout -b filtered-changes origin/main
+```
+
+## Step 2: Run `filter-repo` to Remove the Folder
+
+Rewrite the branch, stripping all changes to the excluded folder:
+
+```bash
+git filter-repo --path path/to/excluded-folder --invert-paths
+```
+
+### What this does
+
+- `--path` targets the specified folder
+- `--invert-paths` inverts the selection, meaning everything **except** that folder is kept
+- Commits that **only** touched the excluded folder are **dropped entirely**
+- Commits that touched the excluded folder **and other files** are kept, but with the folder changes removed
+- Commit hashes will all change since history is being rewritten
+
+## Step 3: Verify the Result
+
+Check that the excluded folder doesn't appear in the rewritten history:
+
+```bash
+# Confirm the folder is absent from the working tree
+ls path/to/excluded-folder  # should not exist or be empty
+
+# Scan the entire rewritten history for any trace of the folder
+git log --all --full-history -- path/to/excluded-folder
+# Should return nothing
+```
+
+Also sanity-check the commit log looks right:
+
+```bash
+git log --oneline
+```
+
+## Step 4: Re-add the Upstream Remote
+
+`filter-repo` removes remotes as a safety measure during rewriting. Re-add them:
+
+```bash
+git remote add upstream https://github.com/original/repo.git
+git remote add origin https://github.com/your-fork/repo.git
+```
+
+## Step 5: Push to Upstream
+
+Push the filtered branch to upstream:
+
+```bash
+git push upstream filtered-changes
+```
+
+Then open a pull request from `filtered-changes` into the upstream repo's main branch.
+
+## Step 6: Rebase Your Fork onto Upstream
+
+Once upstream merges your PR, sync your fork so history stays clean:
+
+```bash
+git fetch upstream
+git checkout main
+git rebase upstream/main
+```
+
+### Handling conflicts in the excluded folder
+
+The excluded folder will likely conflict here since your fork still has those changes. Keep your fork's version:
+
+```bash
+# If conflicts arise:
+git checkout --ours path/to/excluded-folder
+git add path/to/excluded-folder
+git rebase --continue
+```
+
+## Step 7: Force Push the Fork
+
+```bash
+git push origin main --force-with-lease
+```
+
+`--force-with-lease` is preferred over `--force` as it will refuse to push if the remote has been updated by someone else since your last fetch, preventing accidental overwrites.
+
+## Summary
+
+| Step | Command | Purpose |
+|---|---|---|
+| Install tool | `pip install git-filter-repo` | Get filter-repo |
+| Create branch | `git checkout -b filtered-changes origin/main` | Safe working copy |
+| Strip folder | `git filter-repo --path <folder> --invert-paths` | Rewrite history |
+| Verify | `git log --all --full-history -- <folder>` | Confirm folder is gone |
+| Re-add remotes | `git remote add ...` | Restore after filter-repo |
+| Push | `git push upstream filtered-changes` | Send to upstream |
+| Rebase fork | `git rebase upstream/main` | Sync fork |
+| Force push fork | `git push origin main --force-with-lease` | Update fork remote |
